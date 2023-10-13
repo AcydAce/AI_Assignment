@@ -65,7 +65,7 @@ def createPopulation():
         order.append(i)
 
     for i in range(0, populationSize):
-        population.append(random.sample(order, len(order))
+        population.append(random.sample(order, len(order)))
 
 
 def calcDistance(curr_order):
