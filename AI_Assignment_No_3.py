@@ -1,5 +1,3 @@
-import random
-
 def printBoard(board):
     print(board['A'] + '|' + board['B'] + '|' + board['C'])
     print('-+-+-')
@@ -87,10 +85,18 @@ def playerMove():
     return
 
 def compMove():
-    empty_positions = [key for key, value in board.items() if value == ' ']
-    if empty_positions:
-        bestMove = random.choice(empty_positions)
-        insertLetter(bot, bestMove)
+    bestScore = -800
+    bestMove = 0
+    for key in board.keys():
+        if (board[key] == ' '):
+            board[key] = bot
+            score = minimax(board, 0, False)
+            board[key] = ' '
+            if (score > bestScore):
+                bestScore = score
+                bestMove = key
+
+    insertLetter(bot, bestMove)
     return
 
 def minimax(board, depth, isMaximizing):
@@ -102,25 +108,25 @@ def minimax(board, depth, isMaximizing):
         return 0
 
     if (isMaximizing):
-        highestScore = -800
+        bestScore = -800
         for key in board.keys():
             if (board[key] == ' '):
                 board[key] = bot
                 score = minimax(board, depth + 1, False)
                 board[key] = ' '
-                if (score > highestScore):
-                    highestScore = score
-        return highestScore
+                if (score > bestScore):
+                    bestScore = score
+        return bestScore
     else:
-        highestScore = 800
+        bestScore = 800
         for key in board.keys():
             if (board[key] == ' '):
                 board[key] = player
                 score = minimax(board, depth + 1, True)
                 board[key] = ' '
-                if (score < highestScore):
-                    highestScore = score
-        return highestScore
+                if (score < bestScore):
+                    bestScore = score
+        return bestScore
 
 board = {'A': ' ', 'B': ' ', 'C': ' ',
          'D': ' ', 'E': ' ', 'F': ' ',
