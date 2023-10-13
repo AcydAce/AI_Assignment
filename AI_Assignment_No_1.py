@@ -1,9 +1,8 @@
 from collections import deque
 
 def is_valid_move(maze, x, y):
-    # Check if the move is within the maze boundaries and the cell is open.
-    return 0 <= x < len(maze) and 0 <= y < len(maze[0]) and maze[x][y] == 0
-
+    return 0 <= x < len(maze) and 0 <= y < len(maze[0]) and maze[x][y] == 0 # Check if the move is within the 
+                                                                            # maze boundaries and the cell is open.
 def bfs(maze, start, end):
     rows, cols = len(maze), len(maze[0])
     visited = [[False for _ in range(cols)] for _ in range(rows)]
@@ -13,8 +12,7 @@ def bfs(maze, start, end):
     queue.append(start)
     visited[start[0]][start[1]] = True
     
-    # Define possible moves: up, down, left, and right
-    moves = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+    moves = [(-1, 0), (1, 0), (0, -1), (0, 1)] # Define possible moves: up, down, left, and right
     
     while queue:
         x, y = queue.popleft()
@@ -50,7 +48,6 @@ def print_maze(maze, path):
                 print(".", end=" ")  # Open
         print()
 
-# Example usage
 maze = [
     [0, 1, 0, 0, 0],
     [0, 1, 0, 1, 0],
