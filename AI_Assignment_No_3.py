@@ -135,7 +135,7 @@ board = {'A': ' ', 'B': ' ', 'C': ' ',
 def playerMove():
     position = input("Enter the position for 'O':  ")
     insertLetter(player, position)
-    print("Positions are as follows:")
+    print("Positions:")
     print("A, B, C")
     print("D, E, F")
     print("G, H, I")
@@ -143,8 +143,8 @@ def playerMove():
 
 
 printBoard(board)
-print("Computer goes first! Good luck.")
-print("Positions are as follows:")
+print("Good luck.")
+print("Positions:")
 print("A, B, C ")
 print("D, E, F ")
 print("G, H, I ")
